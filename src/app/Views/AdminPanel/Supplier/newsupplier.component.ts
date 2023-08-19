@@ -119,14 +119,12 @@ export class NewsupplierComponent implements OnInit {
               case 'DuplicatePID':
                 this.toastr.error('Vendor is already taken', 'Vendor failed.');
                 break;
-
               default:
                 this.toastr.error(element.description, 'Vendor failed.', {
                   timeOut: 3000
                 });
                 break;
             }
-
           });
         }
       },
@@ -173,7 +171,6 @@ export class NewsupplierComponent implements OnInit {
     this.bsModalRef = this.bsModalService.show(SearchComponent, Object.assign({}, { class: 'modal-dialog modal-dialog-centered modal-dialog-scrollable', initialState }));
     this.bsModalRef.content.okBtnName = 'Search';
   }
-
 
   @HostListener('window:keyup', ['$event']) keyevent(event: any) {
     event.preventDefault();
