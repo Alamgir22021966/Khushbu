@@ -1,0 +1,108 @@
+<div class="container container-fluid">
+    <form [formGroup]="ItemInfoForm" autocomplete="off" (ngSubmit)="Save()">
+        <div class="row mt-2">
+            <div class="col-md-6 offset-3">
+                <div formGroupName="ItemCategory">
+                    <div class="row mb-0">
+                        <label for="Category" class="col-sm-3 form-label font-weight-light text-right no-padding">Category:</label>
+                        <div class="col-sm-7">
+                            <select #AutoFocus formControlName="CategoryID" class="form-control mb-1"
+                                id="CategoryID"
+                                (change)="GetSubCategory(ItemInfoForm.get('ItemCategory.CategoryID').value)">
+                                <option value="">Select Category</option>
+                                <option *ngFor="let category of Categories" [value]="category.Value">
+                                    {{category.Name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-0">
+                        <label for="SubCategoryID"
+                            class="col-sm-3 form-label text-right font-weight-light no-padding">SubCategory:</label>
+                        <div class="col-sm-7">
+                            <select formControlName="SubCategoryID" class="form-control mb-1"
+                                id="SubCategoryID"
+                                (change)="GetItemList(ItemInfoForm.get('ItemCategory.CategoryID').value, ItemInfoForm.get('ItemCategory.SubCategoryID').value)">
+                                <option value="">Select Subcategory</option>
+                                <option *ngFor="let subcategory of SubCategories; let i = index"
+                                    [value]="subcategory.Value">
+                                    {{subcategory.Name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-8 offset-md-2">
+                <div class="card no-padding">
+                    <div class="card-header"><i class="fa fa-align-justify"></i> Product Description</div>
+                    <div class="card-body no-padding">
+                        <div class="tableFixHead">
+                            <div class="table-responsive fix-table">
+                                <table class="table table-bordered table-sm">
+                                    <thead class="thead-light text-center">
+                                        <tr>
+                                            <th class="W60">Slno</th>
+                                            <th>Product Name</th>
+                                            <th class="W100">Retail Price</th>
+                                            <th class="W80">Min Stock</th>
+                                            <th class="W60">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr formArrayName="ItemInfo"
+                                            *ngFor="let itemInfo of ItemInfo.controls; let i = index">
+
+                                            <th scope="row" class="text-right right-padding">
+                                                {{ItemInfo.controls[i].get('ProductName').value === '' || ItemInfo.controls[i].get('ProductName').value === null ? '' : i+1}}
+                                            </th>
+
+                                            <td class="no-padding" formGroupName={{i}}>
+                                                <input type="text" formControlName="ProductName"
+                                                    class="form-control form-control-sm no-border">
+                                            </td>
+                                            <td class="no-padding" formGroupName={{i}}>
+                                                <input type="text" formControlName="RetailPrice"
+                                                    class="form-control form-control-sm text-right no-border">
+                                            </td>
+                                            <td class="no-padding" formGroupName={{i}}>
+                                                <input type="text" formControlName="MinStock"
+                                                    class="form-control form-control-sm text-right no-border">
+                                            </td>
+
+                                            <td class="no-padding text-center">
+                                                <button type="button" class="btn btn-sm btn-danger"
+                                                    (click)="DeleteOneItem(i)"><i class="fa fa-trash"
+                                                        title="Delete"></i></button>
+
+                                                        <!-- <button type="button" class="btn btn-sm btn-danger"
+                                                    (click)="DeleteItem(ItemInfoForm.controls['ItemCategory'].get('CategoryID').value, ItemInfoForm.controls['ItemCategory'].get('SubCategoryID').value,i)"><i class="fa fa-trash"
+                                                        title="Delete"></i></button> -->
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-12">
+                            <button class="btn blue-gradient px-1 W80"><i class="fa fa-save mr-1"></i>Save</button>
+                            <button type="button" class="btn blue-gradient px-1 W80" (click)="Cancel()"><i
+                                    class="fa fa-ban mr-1"></i>Cancel</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

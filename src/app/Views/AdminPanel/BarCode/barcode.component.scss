@@ -1,0 +1,42 @@
+.row {
+    padding: 5px;
+}
+.card {
+    margin: 3px;
+}
+.material-icons {
+    font-size: 30px;
+}
+button span {
+    font-size: 14px;
+}
+.action-buttons button {
+    margin: 5px;
+}
+
+.no-padding {
+    padding: 0px;
+}
+.no-padding-right {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.right-padding {
+    padding-right: 15px;
+    font-weight: normal;
+}
+
+p.normal {
+    font-variant: normal;
+}
+
+p.small {
+    font-variant: small-caps;
+}
+
+.scroll {
+    max-height: 450px;
+    min-height: 450px;
+    overflow-y: auto;
+}

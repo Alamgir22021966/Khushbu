@@ -1,0 +1,57 @@
+<div class="shadow-sm card card-outline card-primary">
+  <!-- <div class="card-header text-center">
+        <a [routerLink]="['/']" class="h1"><b>Admin</b>LTE</a>
+    </div> -->
+  <div class="card-body">
+    <!-- <p class="login-box-msg">Sign in to start your session</p> -->
+
+    <!-- <form [formGroup]="loginForm" (ngSubmit)="loginByAuth()"> -->
+    <form [formGroup]="loginForm" autocomplete="off">
+
+      <div class="row justify-content-center align-self-center" style="margin-bottom: 10px;">
+        <div class="col-12 text-center mt-1">
+          <img src="../../../assets/khusbu-red-logo.jpg" class="img-fluid maxheight"
+            alt="Responsive image by Bootstrap">
+        </div>
+      </div>
+
+      <div class="col-md-10 mx-auto">
+        <div class="form-group has-feedback">
+          <input type="text" formControlName="FirstName" class="form-control"
+            style="position: relative; padding-left: 35px;" name="FirstName" placeholder="User name" autocomplete="off"
+            autofocus [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }" />
+          <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback error">
+            <div *ngIf="f.FirstName.errors.required">Username is required</div>
+          </div>
+          <span class="fa fa-user spanStyle"></span>
+          <!-- <span style="position: absolute;left: 20px; top: 7px;"><i class="fa fa-user"
+              style="color: #cc2222;"></i></span> -->
+        </div>
+      </div>
+      <div class="col-md-10 mx-auto">
+        <div class="form-group has-feedback">
+          <input type="password" formControlName="Password" class="form-control form-control-md"
+            style="position: relative; padding-left: 35px;" name="PassWord" placeholder="Password"
+            autocomplete="current-password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }" />
+          <div *ngIf="submitted && f.Password.errors" class="invalid-feedback error">
+            <div *ngIf="f.Password.errors.required">Password is required</div>
+          </div>
+          <span class="fa fa-lock spanStyle"></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 text-center mt-2" style="margin-bottom: 10px;">
+          <button type="button" id="Signin" class="btn blue-gradient px-4 text-uppercase"
+            style="font-size: 14px;color: white; " mdbRippleRadius (click)="onSubmit()">Sign
+            in</button>
+
+        </div>
+      </div>
+    </form>
+    <ngx-spinner bdColor="rgba(255,255,255,0.5)" size="small" color="#cc2222" type="ball-spin-clockwise-fade"
+      [fullScreen]="false">
+      <p style="color: #cc2222; font-size: 22px;"> Loading... </p>
+    </ngx-spinner>
+  </div>
+</div>

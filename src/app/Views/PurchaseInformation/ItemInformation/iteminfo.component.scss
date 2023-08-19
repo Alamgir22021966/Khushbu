@@ -1,0 +1,42 @@
+@import "_styles.scss";
+
+.fix-table {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.right-padding {
+    padding-right: 15px;
+    font-weight: normal;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+}
+
+thead th {
+    /* font-size: 0.6em; */
+    padding: 1px !important;
+    height: 32px !important;
+    font-weight: normal;
+    vertical-align: middle;
+    background-color: #eeeeee;
+}
+
+.no-border {
+    border: 0px;
+}
+
+.W60 {
+    width: 60px;
+}
+
+.W80 {
+    width: 80px;
+}
+
+.W100 {
+    width: 100px;
+}
+

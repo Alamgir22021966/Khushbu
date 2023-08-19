@@ -1,0 +1,33 @@
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+
+// li:hover a.btn.btn-default {
+//     // background-color: #51a351;
+//     background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+//     // color: red;
+// }
+
+a.btn.btn-default:hover {
+    // background-color: #51a351;
+    background: linear-gradient(to bottom, #ee7724, #d8363a, #dd3675, #b44593);
+    color: rgb(240, 26, 26) !important;
+    font-weight: 500 !important;
+}
+
+.gradeient {
+    // background: linear-gradient(to bottom, #F5F8FE, #CBD5EB);
+    background: linear-gradient(to bottom, white, #f5f5f5);
+}
+.gradeient1 {
+    background: linear-gradient(to bottom, #F1F3F7, #C2CEE8);
+    // background: linear-gradient(to bottom, white, #f5f5f5);
+}

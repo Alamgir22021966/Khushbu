@@ -1,0 +1,36 @@
+@import "_styles.scss";
+
+.fix-table {
+    height: 340px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+}
+
+thead th {
+    padding: 1px !important;
+    height: 32px !important;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+.no-border {
+    border: 0px;
+}
+
+.right-padding {
+    padding-right: 15px;
+    font-weight: normal;
+}
+
+.W60 {
+    width: 60px;
+}
+
+.W80 {
+    width: 80px;
+}

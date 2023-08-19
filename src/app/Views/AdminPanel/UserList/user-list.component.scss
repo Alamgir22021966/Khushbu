@@ -1,0 +1,71 @@
+
+@import "_styles.scss";
+@import "_stylesautocomplete.scss";
+
+.container {
+    padding-left: 30px; 
+    padding-right: 15px;
+}
+
+.fix-table {
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.tableFixHead thead th { 
+    position: sticky;
+    top: 0; 
+}
+.no-padding{
+    padding: 0px;
+
+}
+.right-padding{
+    padding-right: 15px;
+    font-weight: normal;
+}
+
+.no-border{
+    border: 0px;
+}
+
+.font-weight-light thead th {
+    font-weight: 300;;
+}
+
+// button {
+//     width: 100px;
+// }
+
+.W030 {
+    width: 30px;
+}
+.W060 {
+    width: 60px;
+}
+
+.W080 {
+    width: 80px;
+}
+
+.W100 {
+    width: 100px;
+}
+
+.W120 {
+    width: 120px;
+}
+
+.W150 {
+    width: 150px;
+}
+
+.gradeient2 {
+    // background: linear-gradient(to bottom, #F5F8FE, #CBD5EB);
+    background: linear-gradient(to bottom, white, #f5f5f5);
+}
+.gradeient1 {
+    background: linear-gradient(to bottom, #F1F3F7, #C2CEE8);
+    // background: linear-gradient(to bottom, white, #f5f5f5);
+}

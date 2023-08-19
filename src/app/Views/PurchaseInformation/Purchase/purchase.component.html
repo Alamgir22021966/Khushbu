@@ -1,0 +1,262 @@
+<div class="container container-fluid">
+  <form [formGroup]="PurchaseInfoForm" autocomplete="off">
+    <div class="row no-gutters">
+      <div class="col-md-10 offset-md-1">
+        <div formGroupName="PurchaseInfo">
+
+          <div class="row mb-1">
+            <div class="col-sm-6">
+              <div class="row">
+                <label for="PID" class="col-sm-4 form-label font-weight-light text-right no-padding">Purchase
+                  ID:</label>
+                <div class="col-sm-5">
+                  <input type="text" formControlName="PID" class="form-control form-control-sm bg-white" id="PID"
+                    placeholder="" readonly="true">
+                  <!-- <div *ngIf="submitted && PurchaseInfo.get('PID').errors" class="invalid-feedback error">
+                    <div *ngIf="PurchaseInfo.get('PID').errors.required">PID is required</div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="row">
+                <label for="Purchasedate" class="col-sm-4 control-label font-weight-light text-right no-padding">Purchase
+                  Date: </label>
+                <div class="col-sm-5">
+                    <input type="text" formControlName="Purchasedate" placeholder="DD/MM/YYYY" bsDatepicker class="form-control form-control-sm"
+                    placement="bottom" [bsConfig]="datePickerConfig">
+                  <div *ngIf="submitted && PurchaseInfo.get('Purchasedate').errors" class="invalid-feedback error">
+                    <div *ngIf="PurchaseInfo.get('Purchasedate').errors.required">Purchase date is
+                      required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row mb-1">
+            <div class="col-sm-6">
+              <div class="row">
+                <label for="VID" class="col-sm-4 form-label font-weight-light text-right no-padding">Vendor
+                  Name:</label>
+                <div class="col-sm-8">
+                  <select #AutoFocus formControlName="VID" class="form-control form-control-sm" id="VID">
+                    <!-- <option [ngValue]="null" disabled>Choose VendorName</option> -->
+                    <option *ngFor="let Vendor of VendorName; let i = index" [value]="Vendor.Value"
+                      [selected]="Vendor.VID === '101'">
+                      {{Vendor.Name}}
+                    </option>
+                  </select>
+
+                  <div *ngIf="submitted && PurchaseInfo.get('VID').errors" class="invalid-feedback error">
+                    <div *ngIf="PurchaseInfo.get('VID').errors.required">Vendor Name is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="row">
+                <label for="OrderBy" class="col-sm-4 form-label font-weight-light text-right no-padding">Order
+                  By:</label>
+                <div class="col-sm-8">
+                  <input type="text" formControlName="OrderBy" class="form-control form-control-sm" id="OrderBy"
+                    placeholder="">
+
+                  <div *ngIf="submitted && PurchaseInfo.get('OrderBy').errors" class="invalid-feedback error">
+                    <div *ngIf="PurchaseInfo.get('OrderBy').errors.required">OrderBy is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-0">
+            <div class="col-sm-6">
+              <div class="row" style="padding-bottom: 0px;">
+                <div class="col-sm-8">
+                  <div class="row">
+                    <div class="col-sm-6 form-label text-right no-padding-right">
+                      <label class="form-label font-weight-light text-right" style="padding-bottom: 2px;" for="DiscountAmount">Discount Amount:</label>
+                    </div>
+
+                    <div class="col-sm-6" style="padding-right: 1px;">
+                      <div class="input-group no-padding">
+                        <input type="text" formControlName="DiscountAmount" class="form-control form-control-sm"
+                          placeholder="">
+                        <div class="input-group-append no-padding">
+                          <div class="input-group-text tk-mask">TK</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-4" style="padding-left: 1px;">
+                  <div class="input-group no-padding">
+                    <input type="text" formControlName="DiscountPercentage" class="form-control form-control-sm"
+                      placeholder="">
+                    <div class="input-group-append no-padding font-weight-light">
+                      <div class="input-group-text"><i class="fa fa-percent"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-4 text-right no-padding">
+                  <label class="form-label font-weight-light text-right" for="InputBy"> Input By: </label>
+                </div>
+                <div class="col-sm-8">
+                  <input type="text" formControlName="InputBy" class="form-control form-control-sm bg-white"
+                    id="InputBy" placeholder="" readonly="true" [ngClass]="{ 'is-invalid': submitted && f.InputBy.errors }">
+
+                  <div *ngIf="submitted && PurchaseInfo.get('InputBy').errors" class="invalid-feedback error">
+                    <div *ngIf="PurchaseInfo.get('InputBy').errors.required">InputBy is required
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="row mb-2">
+                <div class="col-sm-4 text-right no-padding">
+                  <label class="form-label font-weight-light text-right no-padding" for="InputDate"> Input Date: </label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" formControlName="InputDate" placeholder="DD/MM/YYYY" bsDatepicker class="form-control form-control-sm"
+                    placement="bottom" [bsConfig]="datePickerConfig">
+                  <div *ngIf="submitted && PurchaseInfo.get('InputDate').errors" class="invalid-feedback error">
+                    <div *ngIf="PurchaseInfo.get('InputDate').errors.required">InputDate is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="card no-padding">
+      <div class="card-body no-padding">
+        <div class="tableFixHead">
+          <div class="table-responsive fix-table">
+            <table class="table table-bordered table-sm">
+              <thead class="thead-light text-center">
+                <tr>
+                  <th class="W40">Slno</th>
+                  <th class="W130">Category</th>
+                  <th class="W200">SubCategory</th>
+                  <th class="W250">Product Description</th>
+                  <th class="W80">Quantity</th>
+                  <th class="W90">Unit Price</th>
+                  <th class="W90">Total Price</th>
+                  <th class="W40">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr formArrayName="PurchaseDetails"
+                  *ngFor="let purchaseDetail of PurchaseDetails.controls; let i = index">
+                  <th scope="row" class="text-right right-padding width40">
+                    {{PurchaseDetails.controls[i].get('CategoryID').value == '' || PurchaseDetails.controls[i].get('CategoryID').value == null ? '' : i+1}}
+                    <!-- {{ '' ?? i+1}} -->
+                  </th>
+
+                  <td class="no-padding" formGroupName={{i}}>
+                    <select formControlName="CategoryID" class="form-control form-control-sm no-border" id="Category"
+                    (change)="GetSubCategory(i)">
+                    <option value=""></option>
+                    <option *ngFor="let Category of Categories; let i = index" [value]="Category.Value">
+                      {{Category.Name}}
+                    </option>
+                  </select>
+                  </td>
+                  <td class="no-padding" formGroupName={{i}}>
+                    <select formControlName="SubCategoryID" class="form-control form-control-sm no-border" id="i"
+                      (change)="GetProductName(i)">
+                      <option value=""></option>
+                      <option *ngFor="let subCategor of SubCategories[i]" [value]="subCategor.Value">
+                        {{subCategor.Name}}
+                      </option>
+                    </select>
+                  </td>
+                  <td class="no-padding" formGroupName={{i}}>
+                    <select formControlName="ItemID" class="form-control form-control-sm no-border" id="i">
+                      <option value=""></option>
+                      <option *ngFor="let item of items[i]; let k = index" [value]="item.Value">
+                        {{item.Name}}
+                      </option>
+                    </select>
+                  </td>
+                  <td class="no-padding" formGroupName={{i}}>
+                    <input type="text" formControlName="Quantity" class="form-control form-control-sm no-border">
+                  </td>
+                  <td class="no-padding" formGroupName={{i}}>
+                    <input type="text" formControlName="UnitPrice"
+                      class="form-control form-control-sm no-border text-right" (change)="GetTotalPrice(i)">
+                  </td>
+                  <td class="no-padding" formGroupName={{i}}>
+                    <input type="text" formControlName="TotalPrice"
+                      class="form-control form-control-sm no-border text-right bg-white">
+                  </td>
+                  <td class="no-padding">
+                    <!-- <p><button *ngIf="PurchaseInfoForm.controls.PurchaseDetails.controls.length > 1" class="btn btn-xs btn-danger" (click)="DeleteOneItem(i, PurchaseInfoForm.controls.PurchaseDetails.controls)"><i class="fa fa-trash" title="Delete"></i></button></p> -->
+                    <button type="button" class="btn btn-sm btn-danger ml-4" (click)="DeleteOneItem(i)"><i
+                        class="fa fa-trash" title="Delete"></i></button>
+                  </td>
+
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total price calculation formated with angular currency pipe -->
+    <!-- <div class="mt-1 text-right mr-4">
+            Total price is {{ totalSum | currency:'Tk ':'symbol-narrow':'1.2-2'}}
+        </div> -->
+
+    <div class="row no-gutters">
+      <div class="col-md-8 offset-md-3">
+        <div class="mt-0">
+          <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="ChangeData()" style="width: 90px">
+            <i [ngClass]="getClass()" class=" px-1"></i>{{caption}}
+          </button>
+          <!-- <button class="btn blue-gradient btn-rounded px-1 mb-1"><i class="fa fa-save"></i>Save</button> -->
+          <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="Cancel()" style="width: 90px">
+            <i class="fa fa-ban px-1"></i>Cancel
+          </button>
+          <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="OpenDeleteModel()" style="width: 90px">
+            <i class="fa fa-trash px-1"></i>Delete
+          </button>
+          <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="OpenSearchModel()" style="width: 90px"><i
+              class="fa fa-search px-1"></i>Search</button>
+
+          <!-- <button (click)="PurchaseInfoForm.valid ? generatePdf('open') : ''"  class="btn btn-primary d-flex align-items-center justify-content-center">
+                  <i class="material-icons">
+                    print
+                  </i><span>Print PDF</span>
+                </button> -->
+          <!-- <button (click)="getDocumentDefinition()">Open PDF</button> -->
+          <span class="text-right" style="margin-left: 150px;">
+            Total price is {{ totalSum | currency:'Tk ':'symbol-narrow':'1.2-2'}}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

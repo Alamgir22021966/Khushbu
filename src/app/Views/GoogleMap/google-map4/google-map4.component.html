@@ -1,0 +1,19 @@
+<div class="container container-fluid mt-2">
+  <h2>{{ title }}</h2>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]=zoom [mapDraggable]='false' (mapClick)='mapClick($event)'
+    (mapDbl)='mapDoubleClick($event)' [disableDoubleClickZoom]='true'>
+    <agm-marker [latitude]="lat" [longitude]="lng" [title]="'A'" [label]="'A'" [opacity]=".9" [iconUrl]="icon">
+    </agm-marker>
+    <agm-marker [latitude]="lat1" [longitude]="lng1" [title]="'D'" [label]="'D'" [opacity]=".5" [zIndex]="'0'">
+    </agm-marker>
+
+    <agm-overlay [latitude]="lat" [longitude]="lng">
+      <!-- blue html square -->
+      <!-- <div style="width:35px;height:35px;background-color:blue;"></div> -->
+
+      <i class="fa fa-map-marker-alt" style="font-size: 35px"></i>
+    </agm-overlay>
+
+
+  </agm-map>
+</div>

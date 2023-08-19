@@ -1,0 +1,103 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+
+  <form [formGroup]="UserEditForm" autocomplete="off" (ngSubmit)="Save()">
+    <div class="row no-gutters">
+      <div class="col-md-10 offset-md-0">
+        <div class="form-group row mb-1">
+          <label for="UID" class="col-sm-5 col-form-label text-right no-padding">User ID:</label>
+          <div class="col-sm-7">
+            <input type="text" formControlName="UID" class="form-control form-control-sm" id="firstName" placeholder="">
+
+            <div *ngIf="submitted && f.UID.errors" class="invalid-feedback error">
+              <div *ngIf="f.UID.errors.required">User ID is required</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group row mb-1">
+          <label for="FirstName" class="col-sm-5 col-form-label text-right no-padding">First Name:</label>
+          <div class="col-sm-7">
+            <input type="text" formControlName="FirstName" class="form-control form-control-sm" id="FirstName"
+              placeholder="">
+
+            <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback error">
+              <div *ngIf="f.FirstName.errors.required">First Name is required</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group row mb-1">
+          <label for="LastName" class="col-sm-5 col-form-label text-right no-padding">Last Name:</label>
+          <div class="col-sm-7">
+            <input type="text" formControlName="LastName" class="form-control form-control-sm" id="LastName"
+              placeholder="">
+            <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback error">
+              <div *ngIf="f.LastName.errors.required">Last Name is required</div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row mb-1">
+          <label for="FullName" class="col-sm-5 col-form-label text-right no-padding">Full Name:</label>
+          <div class="col-sm-7">
+            <input type="text" formControlName="FullName" class="form-control form-control-sm" id="FullName"
+              placeholder="">
+            <div *ngIf="submitted && f.FullName.errors" class="invalid-feedback error">
+              <div *ngIf="f.FullName.errors.required">Full Name is required</div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row mb-1">
+          <label for="email" class="col-sm-5 col-form-label text-right no-padding">Email Address:</label>
+          <div class="col-sm-7">
+            <input type="email" formControlName="Email" class="form-control form-control-sm" id="email" placeholder="">
+            <div *ngIf="submitted && f.Email.errors" class="invalid-feedback error">
+              <div *ngIf="f.Email.errors.required">Email is required</div>
+              <div *ngIf="f.Email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="form-group row mb-1">
+          <label for="password" class="col-sm-5 col-form-label text-right no-padding">Password:</label>
+          <div class="col-sm-7">
+            <input type="password" formControlName="Password" class="form-control form-control-sm" id="Password"
+              placeholder="">
+            <div *ngIf="submitted && f.Password.errors" class="invalid-feedback error">
+              <div *ngIf="f.Password.errors.required">Password is required</div>
+              <div *ngIf="f.Password.errors.minlength">Password must be at least 6 characters</div>
+              <div *ngIf="f.Password.errors.maxlength">Password must be less than 9 characters</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn blue-gradient px-2" (click)="Save()" translate="ok"><i class="fa fa-save mr-1"></i>
+    Save</button>
+  <button type="button" class="btn blue-gradient px-2" (click)="bsModalRef.hide()" translate="Cancel"><i
+    class="fa fa-ban mr-1"></i>Cancel
+  </button>
+
+</div>

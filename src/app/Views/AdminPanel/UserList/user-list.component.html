@@ -1,0 +1,91 @@
+<div class="container container-fluid">
+  <form [formGroup]="UserListForm" autocomplete="off">
+    <div class="row no-gutters">
+      <div class="col-md-12">
+        <div class="shadow-sm card" style="padding-bottom: 1px; margin-bottom: 8px;">
+          <div class="card-body gradeient2" style="padding-bottom: 2px;">
+            <div class="row">
+              <div class="col-md-5" style="padding-right: 1px;">
+                <div formGroupName="User">
+                  <div class="col-sm-12">
+                    <div class="row no-padding mb-2">
+                      <label for="UID" class="col-sm-3 form-label text-right font-weight-light no-padding mt-1">User
+                        ID:</label>
+                      <div class="col-sm-9">
+                        <ng-autocomplete #ngAutoCompleteStatic [data]="AllUsers | async"
+                          (selected)='selectEvent($event)' formControlName="UID" id="UID" name="UID"
+                          [placeholder]="placeholder" [initialValue]="" (inputChanged)='onChangeSearch($event)'
+                          [searchKeyword]="keyword" [minQueryLength]="2" notFoundText="Not found"
+                          [itemTemplate]="itemTemplateStatic" [notFoundTemplate]="notFoundTemplate"
+                          (inputCleared)="searchCleared()" [debounceTime]="100">
+                        </ng-autocomplete>
+                        <ng-template #itemTemplateStatic let-item>
+                          <a [innerHTML]="item.Name"></a>
+                        </ng-template>
+                        <ng-template #notFoundTemplate let-notFound>
+                          <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3" style="padding-left: 1px;">
+                <button type="button" class=" my-btn-height btn blue-gradient btn-rounded px-2 mr-2"
+                  (click)="Open()">New User</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <div class="card no-padding">
+          <div class="card-header"><i class="fa fa-align-justify"></i> User Information</div>
+          <div class="card-body no-padding">
+            <div class="tableFixHead">
+              <div class="table-responsive fix-table font-weight-light">
+                <table class="table table-bordered table-sm">
+                  <thead class="thead-light text-center">
+                    <tr>
+                      <th class="W060">Slno</th>
+                      <th class="W080">User ID</th>
+                      <th class="W120">First Name</th>
+                      <!-- <th class="W120">Last Name</th> -->
+                      <th class="W150">Full Name</th>
+                      <th class="W120">Email</th>
+                      <th class="W100">Password</th>
+                      <th class="text-right" style="width: 30px; border-right: 0px;padding-right: 0px;">Act</th>
+                      <th class="text-left" style="width: 30px; border-left: 0px;padding-left: 0px;">ion</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of userList; let i = index">
+                      <td class="text-right right-padding">{{i+1}}</td>
+                      <td>{{user.UID}}</td>
+                      <td>{{user.FirstName}}</td>
+                      <!-- <td>{{user.LastName}}</td> -->
+                      <td>{{user.FullName}}</td>
+                      <td>{{user.Email}}</td>
+                      <td>{{user.Password}}</td>
+                      <td class="no-padding">
+                        <button type="button" class="btn blue-gradient btn-block btn-rounded px-1"
+                          (click)="Delete(i, user.UID)"><i class="fa fa-trash" title="Delete"></i></button>
+                      </td>
+                      <td class="no-padding">
+                        <button type="button" class="btn blue-gradient btn-block btn-rounded px-1"
+                          (click)="openModal(i, user.UID)"><i class="fa fa-edit" title="Edit"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

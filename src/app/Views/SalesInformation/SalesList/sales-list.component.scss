@@ -1,0 +1,36 @@
+
+@import "_styles.scss";
+@import "_stylesautocomplete.scss";
+
+.container {
+    padding-left: 30px; 
+    padding-right: 15px;
+}
+
+.fix-table {
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.tableFixHead thead th { 
+    position: sticky;
+    top: 0; 
+}
+
+.right-padding{
+    padding-right: 15px;
+    font-weight: normal;
+}
+
+.no-border{
+    border: 0px;
+}
+
+.font-weight-light thead th {
+    font-weight: 300;;
+}
+
+button {
+    width: 120px;
+}

@@ -1,0 +1,249 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700");
+
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+// @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css");
+
+@import "~admin-lte/plugins/fontawesome-free/css/all.min.css";
+@import "~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css";
+@import "~admin-lte/dist/css/adminlte.min.css";
+
+@import "./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+@import "~ngx-toastr/toastr";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+// $primary: crimson;
+$modal-footer-border-color: #0da0ec;
+$modal-header-border-width: 1px;
+$modal-header-border-color: crimson;
+
+// $gray-200-alt: green;
+// $gray-200: red;
+$dark: rgb(237, 79, 79);
+// border-bottom: 1px solid lighten($dark, 10%);
+$dark-main-bg: lighten($dark, 7.5%) !important;
+
+input.ng-valid,
+input.ng-invalid,
+textarea.ng-valid,
+textarea.ng-invalid,
+select.ng-valid,
+select.ng-invalid,
+ng-select.ng-valid,
+ng-select.ng-invalid,
+ng-autocomplete.ng-valid {
+    border-color: #28a745;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    // border-color: #86b7fe;
+    border-color: #28a745;
+    outline: 0px;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253/2%);
+}
+
+input.ng-touched.ng-invalid {
+    border-color: #dc3545;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.user-menu > .nav-link {
+    cursor: pointer;
+}
+
+.user-menu > .nav-link:after {
+    content: none;
+}
+
+.user-menu > .dropdown-menu {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0;
+    width: 280px;
+}
+
+.user-menu > .dropdown-menu,
+.user-menu > .dropdown-menu > .user-body {
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.user-menu > .dropdown-menu > li.user-header {
+    height: 175px;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-menu > .dropdown-menu > li.user-header > img {
+    z-index: 5;
+    height: 90px;
+    width: 90px;
+    border: 3px solid;
+    border-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-menu > .dropdown-menu > li.user-header > p {
+    z-index: 5;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.user-menu > .dropdown-menu > li.user-header > p > small {
+    display: block;
+    font-size: 12px;
+}
+
+.user-menu > .dropdown-menu > .user-body {
+    border-bottom: 1px solid #495057;
+    border-top: 1px solid #dee2e6;
+    padding: 15px;
+}
+
+.user-menu > .dropdown-menu > .user-body::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+@media (min-width: 576px) {
+    .user-menu > .dropdown-menu > .user-body a {
+        background: #ffffff !important;
+        color: #495057 !important;
+    }
+}
+
+.user-menu > .dropdown-menu > .user-footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.user-menu > .dropdown-menu > .user-footer::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.user-menu > .dropdown-menu > .user-footer .btn-default {
+    color: #6c757d;
+}
+
+@media (min-width: 576px) {
+    .user-menu > .dropdown-menu > .user-footer .btn-default:hover {
+        background-color: #f8f9fa;
+    }
+}
+
+.user-menu .user-image {
+    border-radius: 50%;
+    float: left;
+    height: 2.1rem;
+    margin-right: 10px;
+    margin-top: -2px;
+    width: 2.1rem;
+}
+
+@media (min-width: 576px) {
+    .user-menu .user-image {
+        float: none;
+        line-height: 10px;
+        margin-right: 0.4rem;
+        margin-top: -8px;
+    }
+}
+
+.user-menu .user-image {
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-right: 0;
+    margin-left: -8px;
+}
+
+$utilities: () !default;
+$utilities: map-merge(
+    (
+        "border-radius": (
+            property: border-radius,
+            class: br,
+            values: (
+                0: 0,
+                1: 5px,
+                2: 7px,
+                3: 9px,
+                4: 11px,
+                5: 13px,
+            ),
+        ),
+        "border-color": (
+            property: border-color,
+            class: bc,
+            responsive: true,
+            values: (
+                black: black,
+                white: white,
+                green: green,
+                crimson: crimson,
+            ),
+        ),
+    ),
+    $utilities
+);
+
+.login-page {
+    background-color: #fafcfd;
+    // background: linear-gradient(to bottom, white, #fafcfd);
+}
+
+[class*="sidebar-dark"] .brand-link {
+    // color: #ffffff;
+    color: #000;
+    // border-bottom: 1px solid #FFFFFF;
+}
+
+[class*="sidebar-dark"] .user-panel {
+    // border-bottom: 1px solid rgba(13,160,236,.5);
+    // border-bottom: 1px solid rgba(255,108,55);
+    border-bottom: 1px solid #0da0ec;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+[class*="sidebar-dark-"] .sidebar a {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active,
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:focus,
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:hover {
+    background-color: rgba(251, 89, 89, 0.2);
+    color: #fff !important;
+}
+
+.nav-sidebar > .nav-item.menu-open > .nav-link,
+.nav-sidebar > .nav-item:hover > .nav-link,
+.nav-sidebar > .nav-item > .nav-link:focus {
+    text-shadow: rgb(0 0 0 / 25%) 0 -1px 0;
+    box-shadow: rgb(0 0 0 / 25%) 0 1px 0, inset rgb(255 255 255 / 16%) 0 1px 0;
+}
+
+.ngTemplateTips {
+    background-color: rgb(129, 166, 30) !important;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #fffeee;
+    color: #fff;
+}
+
+@import "~bootstrap/scss/bootstrap.scss";

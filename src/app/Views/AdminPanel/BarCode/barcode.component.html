@@ -1,0 +1,171 @@
+<div class="container-fluid">
+  <form [formGroup]="BarcodeForm" autocomplete="off">
+    <div class="row no-gutters">
+      <div class="col-md-6 offset-sm-1">
+        <div formGroupName="BarcodeParameter">
+          <div class="shadow-sm card" style="min-height: 365px;">
+            <div class="card-body mt-1">
+
+              <div class="row">
+                <h2 class="card-title d-flex align-items-center"><i class="fa fa-snowflake mr-2"
+                    aria-hidden="true"></i>Barcode Generators:</h2>
+              </div>
+
+              <div class="row">
+                <div class="col-md-10 offset-sm-1">
+                  <div class="row">
+                    <label for="CATEGORYID" class="col-sm-4 form-label text-right no-padding-right">Category:</label>
+                    <div class="col-sm-8">
+                      <ng-select [items]="Category" [virtualScroll]="true" [clearable]="true" bindLabel="Name"
+                        bindValue="Value" placeholder="All" [searchable]="true" formControlName="CategoryID"
+                        (open)="onOpen()" (close)="onClose()" (focus)="onFocus($event)" (search)="onSearch($event)">
+                      </ng-select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-10 offset-sm-1">
+                  <div class="row">
+                    <label for="SUBCATEGORYID" class="col-sm-4 form-label text-right no-padding-right">Sub
+                      Category:</label>
+                    <div class="col-sm-8">
+                      <ng-select [items]="SubCategory" [virtualScroll]="true" bindLabel="Name" bindValue="Value"
+                        placeholder="All" formControlName="SubCategoryID"
+                        (change)="GetProductName(BarcodeParameter.get('CategoryID').value, BarcodeParameter.get('SubCategoryID').value)">
+
+                      </ng-select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-10 offset-sm-1">
+
+                  <div class="row">
+                    <label for="ItemID" class="col-sm-4 form-label text-right no-padding-right">Product
+                      Name:</label>
+                    <div class="col-sm-8">
+                      <ng-select [items]="Items" [virtualScroll]="true" bindLabel="Name" bindValue="Value"
+                        placeholder="All" formControlName="ItemID">
+
+                      </ng-select>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-md-10 offset-sm-1">
+
+                  <div class="row">
+                    <label for="DisplayValue" class="col-sm-4 form-label text-right no-padding-right">Display
+                      Value:</label>
+                    <div class="col-sm-2">
+                      <input type="checkbox" class="form-control" formControlName="DisplayValue" id="DisplayValue"
+                        placeholder="DisplayValue">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-md-10 offset-sm-1">
+
+                  <div class="row">
+                    <label for="Quantity" class="col-sm-4 form-label text-right no-padding-right">Quantity:</label>
+                    <div class="col-sm-3">
+                      <input type="number" class="form-control" formControlName="Quantity" id="Quantity"
+                        placeholder="">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="shadow-sm card">
+            <div class="card-body">
+              <div class="row">
+                <div class="text-center">
+                  <button (click)="BarcodeForm.valid ? GeneratePDF('open') : ''"
+                    class="btn purple-gradient mr-1 ml-3"><i class="fa fa-folder-open mr-1" aria-hidden="true"></i>
+                    <span>Open</span></button>
+
+                  <button (click)="BarcodeForm.valid ? GeneratePDF('download') : ''" class="btn peach-gradient mr-1">
+                    <i class="fa fa-download mr-1" aria-hidden="true"></i><span>Download</span></button>
+
+                  <button (click)="BarcodeForm.valid ? GeneratePDF('print') : ''" class="btn blue-gradient mr-1">
+                    <i class="fa fa-print mr-1" aria-hidden="true"></i><span>Print</span></button>
+
+                  <button type='reset' (click)="Cancel()" class="btn purple-gradient mr-1">Cancel</button>
+
+                  <button (click)="BarCode()" class="btn peach-gradient"> <i class="fa fa-newspaper-o mr-1"
+                      aria-hidden="true"></i><span>Barcode</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+        <div class="shadow-sm card scroll">
+          <!-- <div class="shadow-sm card cloudy-knoxville-gradient" style="height: 450px;"> -->
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <!-- <h4 class="d-flex align-items-center">
+                                <i class="fa fa-newspaper-o mr-2" aria-hidden="true"></i>
+                                Barcode</h4> -->
+
+            </div>
+            <div class="row no-padding">
+              <div formArrayName="Barcodes" *ngFor="let s of Barcodes.controls; let i=index">
+                <div formGroupName={{i}}>
+                  <div class="col-md-10 offset-sm-1">
+                    <div class="form-group">
+
+                      <ngx-barcode *ngFor="let bcValue of values" [bc-element-type]="elementType" [bc-value]="bcValue"
+                        [bc-format]="format" [bc-line-color]="lineColor" [bc-width]="width" [bc-height]="height"
+                        [bc-display-value]="displayValue" [bc-font-options]="fontOptions" [bc-font]="font"
+                        [bc-text-align]="textAlign" [bc-text-position]="textPosition" [bc-text-margin]="textMargin"
+                        [bc-font-size]="fontSize" [bc-background]="background" [bc-margin]="margin"
+                        [bc-margin-top]="marginTop" [bc-margin-bottom]="marginBottom" [bc-margin-left]="marginLeft"
+                        [bc-margin-right]="marginRight">
+                      </ngx-barcode>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <tbody>
+                            <tr *ngFor="let PS of PrintSerials">
+                               <ngx-barcode [bc-value]="PS.SerialId" [bc-display-value]="true"></ngx-barcode>
+                            </tr>
+                        </tbody> -->
+
+
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <ul *ngFor="let person of people">
+            <li [ngStyle]="{'color':getColor(person.country)}"> {{ person.name }} ({{ person.country }}) (1)
+            </li>
+          </ul>
+
+          <ul *ngFor="let person of people">
+            <li [style.color]="getColor(person.country)">{{ person.name }} ({{ person.country }})
+            </li>
+          </ul> -->
+
+
+
+  </form>
+</div>

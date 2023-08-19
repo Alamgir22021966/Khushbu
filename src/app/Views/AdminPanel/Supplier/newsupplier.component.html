@@ -1,0 +1,118 @@
+<div class="container container-fluid mt-2">
+  <div class="row no-gutters">
+    <div class="col-md-8 offset-2">
+      <div class="shadow card no-padding">
+        <!-- <div class="card-header"><i class="fa fa-align-justify"></i> Supplier Information</div> -->
+        <div class="card-body no-padding">
+
+          <form [formGroup]="VendorForm" autocomplete="off">
+            <div class="row no-gutters">
+              <div class="col-md-8 offset-2 mt-2">
+                <div class="row mb-1 mt-3">
+                  <label for="VID" class="col-sm-4 col-form-label text-right no-padding-right">Vendor ID:</label>
+                  <div class="col-sm-4 left-padding">
+                    <input type="text" formControlName="VID" class="form-control bg-white" id="VID" placeholder=""
+                      readonly="true" [attr.disabled]="true" [ngClass]="{ 'is-invalid': submitted && f.VID.errors }">
+                    <!-- <div *ngIf="submitted && f.VID.errors" class="invalid-feedback error">
+                      <div *ngIf="f.VID.errors.required">VID is required</div>
+                    </div> -->
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <label for="VendorName" class="col-sm-4 col-form-label text-right no-padding-right">Vendor
+                    Name:</label>
+                  <div class="col-sm-8 left-padding">
+                    <input type="text" #AutoFocus formControlName="VendorName" class="form-control" id="VendorName" placeholder="" [ngClass]="{ 'is-invalid': submitted && f.VendorName.errors }">
+                    <div *ngIf="submitted && f.VendorName.errors" class="invalid-feedback error">
+                      <div *ngIf="f.VendorName.errors.required">Vendor Name is required</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <label for="Address" class="col-sm-4 col-form-label text-right no-padding-right">Address:</label>
+                  <div class="col-sm-8 left-padding">
+                    <input type="text" formControlName="Address" class="form-control" id="Address" placeholder="">
+                  </div>
+
+                </div>
+
+                <div class="row mb-1">
+                  <label for="ContactPerson" class="col-sm-4 col-form-label text-right no-padding-right">Contact
+                    Person:</label>
+                  <div class="col-sm-8 left-padding">
+                    <input type="text" formControlName="ContactPerson" class="form-control" id="ContactPerson"
+                      placeholder="" [ngClass]="{ 'is-invalid': submitted && f.MobilePhone1.errors }" />
+                    <div *ngIf="submitted && f.ContactPerson.errors" class="invalid-feedback error">
+                      <div *ngIf="f.ContactPerson.errors.required">Contact Person is required</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <label for="LandPhone" class="col-sm-4 control-label text-right no-padding-right">Land Phone: </label>
+                  <div class="col-sm-5 left-padding">
+                    <input type="text" placeholder="" formControlName="LandPhone" class="form-control" NumberOnly>
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <div class="col-sm-8">
+                    <div class="row">
+                      <div class="col-sm-6 text-right no-padding-right">
+                        <label for="MobilePhone1"> Mobile Phone: </label>
+                      </div>
+                      <div class="col-sm-6 left-padding" style="padding-right: 1px;">
+                        <input type="text" placeholder="" formControlName="MobilePhone1" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.MobilePhone1.errors }" style="padding-right: 0px;" NumberOnly>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-4" style="padding-left: 0px;">
+                    <input type="text" placeholder="" formControlName="MobilePhone2" class="form-control" style="padding-left: 10px;" NumberOnly>
+                  </div>
+
+                  <div class="row" style="padding-right: 0px;">
+                    <div class="col-sm-4" style="padding-left: 0px;"></div>
+                    <div class="col-sm-8" style="padding-left: 12px; padding-right: 0px;">
+                      <div *ngIf="submitted && f.MobilePhone1.errors" class="invalid-feedback error">
+                        <div *ngIf="f.MobilePhone1.errors.required">Mobile Phone is required</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-1">
+                  <label for="email" class="col-sm-4 col-form-label text-right no-padding-right">Email Address:</label>
+                  <div class="col-sm-8 left-padding">
+                    <input type="email" formControlName="Email" class="form-control" id="email" placeholder="" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                    <div *ngIf="submitted && f.MobilePhone1.errors" class="invalid-feedback error">
+                      <div *ngIf="f.MobilePhone1.errors.required">Email Address is required</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row no-gutters mb-3 ">
+              <div class="col-md-12 text-center">
+                <button type="button" class="btn blue-gradient px-1" (click)="ChangeData()"><i [ngClass]="getClass()"
+                    class="mr-1"></i>{{caption}}</button>
+                <!-- <button type="button" class="btn blue-gradient px-1" (click)="Save()"><i class="fa fa-save"></i> Save</button> -->
+                <button type="reset" class="btn blue-gradient px-1" (click)="Cancel()"><i
+                    class="fa fa-ban"></i> Cancel</button>
+
+                <button type="button" class="btn blue-gradient px-1" (click)="OpenDeleteModel()"><i class="fa fa-trash mr-1"></i>Delete</button>
+                <button type="button" class="btn blue-gradient px-1" (click)="OpenSearchModel()"><i class="fa fa-search mr-1"></i>Search</button>
+                
+              </div>
+            </div>
+            
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

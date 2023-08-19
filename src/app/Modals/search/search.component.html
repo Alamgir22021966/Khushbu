@@ -1,0 +1,50 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()" style="color: white;">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="modalForm" autocomplete="off">
+      <div class="col-md-10 offset-1">
+
+        <h4 class="font-weight-light"><label for={{ControlName}} style="font-weight: 400;">{{label}}:</label></h4>
+
+        <!-- <ng-select [items]="selectlist" [virtualScroll]="true" bindLabel="Name" bindValue="Value"
+          placeholder="{{'Select ' + ControlName}}" formControlName=SID>
+        </ng-select> -->
+
+        <!-- placeholder="{{placeholder + ControlName}}" -->
+
+          <ng-autocomplete [data]="Suppliers | async"
+           formControlName=SID id=SID name=SID
+            [initialValue]="" [searchKeyword]="keyword" [placeholder] = "placeholder"
+            [minQueryLength]="2" notFoundText="Not found" [itemTemplate]="itemTemplateStatic"
+            [notFoundTemplate]="notFoundTemplate" [debounceTime]="100">
+          </ng-autocomplete>
+          <ng-template #itemTemplateStatic let-item>
+            <a [innerHTML]="item.Name"></a>
+          </ng-template>
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+
+        <div *ngIf="Submitted && f.SID.errors" class="error">
+          <div *ngIf="f.SID.errors.required">{{ControlName}} is required</div>
+        </div>
+
+      </div>
+      
+    </form>
+    <br>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn blue-gradient px-2" (click)="bsModalRef.hide()" translate="Cancel"><i
+        class="fa fa-ban"></i> Cancel</button>
+    <button type="button" class="btn blue-gradient px-2" (click)="ClickOk(modalForm.get('SID').value)" translate="ok"><i
+      [ngClass]="GetClass(Action)"></i> {{okBtnName}}</button>
+  </div>
+
+</div>

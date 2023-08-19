@@ -1,0 +1,30 @@
+
+<div class="container-fluid mt-2">
+    <h1>Angular Google Maps (AGM) Demo</h1>
+    <p><a href="https://angular-maps.com/" target="_blank">Official Website</a></p>
+    
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false"
+      (mapClick)="mapClicked($event)" [styles]="customStyle">
+    
+        <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat"
+        [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
+    
+        <agm-info-window>
+          <strong>InfoWindow content</strong>
+        </agm-info-window>
+
+        <!-- <map-info-window>{{ infoContent }}</map-info-window> -->
+        <div id="legend"><h3>Legend</h3></div>
+      </agm-marker>
+    
+      <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
+        [editable]="true">
+      </agm-circle>
+    
+
+    </agm-map>
+    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14607.610239171298!2d90.3690461!3d23.7508539!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x29be637f61fd8dd7!2sIcicle%20Corporation!5e0!3m2!1sen!2sbd!4v1641103494823!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+</div>
+
+
+

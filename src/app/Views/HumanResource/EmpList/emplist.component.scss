@@ -1,0 +1,62 @@
+@import "_styles.scss";
+@import "_stylesautocomplete.scss";
+
+.container {
+    padding-left: 30px; 
+    padding-right: 15px;
+}
+
+.fix-table {
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.tableFixHead thead th { 
+    position: sticky;
+    top: 0; 
+}
+
+.right-padding{
+    padding-right: 15px;
+    font-weight: normal;
+}
+
+.no-border{
+    border: 0px;
+}
+
+.font-weight-light thead th {
+    font-weight: 300;;
+}
+
+// button {
+//     width: 130px;
+// }
+
+.W030 {
+    width: 30px;
+}
+.W060 {
+    width: 60px;
+}
+
+.W080 {
+    width: 80px;
+}
+
+.W100 {
+    width: 100px;
+}
+
+.W120 {
+    width: 120px;
+}
+
+.W150 {
+    width: 150px;
+}
+
+.W250 {
+    width: 250px;
+}

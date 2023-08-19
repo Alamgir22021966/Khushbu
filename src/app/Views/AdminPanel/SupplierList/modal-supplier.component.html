@@ -1,0 +1,87 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <br>
+    <form [formGroup]="supplierForm" autocomplete="off" (ngSubmit)="Save()">
+      <div class="row no-gutters">
+        <div class="col-md-11 offset-md-0">
+          <div class="row mb-1">
+            <label for="VID" class="col-sm-4 col-form-label text-right no-padding">Vendor ID:</label>
+            <div class="col-sm-6">
+              <input type="text" formControlName="VID" class="form-control form-control-sm" id="VID" placeholder="">
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <label for="VendorName" class="col-sm-4 col-form-label text-right no-padding">Supplier Name:</label>
+            <div class="col-sm-8">
+              <input type="text" formControlName="VendorName" class="form-control form-control-sm" id="VendorName"
+                placeholder="">
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <label for="Address" class="col-sm-4 col-form-label text-right no-padding">Address:</label>
+            <div class="col-sm-8">
+              <input type="text" formControlName="Address" class="form-control form-control-sm" id="Address"
+                placeholder="">
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <label for="ContactPerson" class="col-sm-4 col-form-label text-right no-padding">Contact
+              Person:</label>
+            <div class="col-sm-8">
+              <input type="text" formControlName="ContactPerson" class="form-control form-control-sm" id="ContactPerson"
+                placeholder="" />
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <label for="LandPhone" class="col-sm-4 control-label text-right no-padding">Land Phone: </label>
+            <div class="col-xs-12 col-12 col-md-8">
+              <input type="text" placeholder="" formControlName="LandPhone" class="form-control form-control-sm">
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-sm-8">
+              <div class="row">
+                <div class="col-sm-6 text-right no-padding">
+                  <label for="MobilePhone1"> Mobile Phone: </label>
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" placeholder="" formControlName="MobilePhone1" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <input type="text" placeholder="" formControlName="MobilePhone2" class="form-control form-control-sm">
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <label for="email" class="col-sm-4 col-form-label text-right no-padding">Email Address:</label>
+            <div class="col-sm-6">
+              <input type="email" formControlName="Email" class="form-control form-control-sm" id="email">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+    <br>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn blue-gradient px-2" (click)="Save()" translate="ok"><i class="fa fa-save mr-1"></i>
+      Save </button>
+    <button type="button" class="btn blue-gradient px-2" (click)="bsModalRef.hide()" translate="Cancel"><i
+      class="fa fa-ban mr-1"></i>Cancel</button>
+  </div>
+</div>

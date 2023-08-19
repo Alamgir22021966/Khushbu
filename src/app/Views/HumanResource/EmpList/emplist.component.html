@@ -1,0 +1,93 @@
+<div class="container container-fluid">
+  <form [formGroup]="EmployeelistForm" autocomplete="off">
+    <div class="row no-gutters">
+
+      <div class="col-md-12">
+        <div class="shadow-sm card" style="padding-bottom: 1px; margin-bottom: 8px;">
+          <div class="card-body" style="padding-bottom: 2px;">
+            <div class="row">
+              <div class="col-md-5" style="padding-right: 1px;">
+                <div formGroupName="Supplier">
+                  <div class="col-sm-12">
+                    <div class="row no-padding mb-2">
+                      <label for="VID" class="col-sm-3 form-label text-right font-weight-light no-padding mt-1">Employee
+                        ID:</label>
+                      <div class="col-sm-9">
+                        <ng-autocomplete #ngAutoCompleteStatic [data]="Suppliers | async"
+                          (selected)='selectEvent($event)' formControlName="VID" id="VID" name="VID" [initialValue]=""
+                          (inputChanged)='onChangeSearch($event)' [searchKeyword]="keyword" [placeholder]="placeholder"
+                          [minQueryLength]="2" notFoundText="Not found" [itemTemplate]="itemTemplateStatic"
+                          [notFoundTemplate]="notFoundTemplate" (inputCleared)="searchCleared()" [debounceTime]="100">
+                        </ng-autocomplete>
+                        <ng-template #itemTemplateStatic let-item>
+                          <a [innerHTML]="item.Name"></a>
+                        </ng-template>
+                        <ng-template #notFoundTemplate let-notFound>
+                          <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3" style="padding-left: 1px;">
+                <button type="button" class="btn blue-gradient btn-block btn-rounded px-2 mr-2" style="width: 130px;"
+                  (click)="Open()">New Employee</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="card no-padding">
+          <div class="card-header"><i class="fa fa-align-justify"></i> Employee Information</div>
+          <div class="card-body no-padding">
+            <div class="tableFixHead">
+              <div class="table-responsive fix-table font-weight-light">
+                <table class="table table-bordered table-sm">
+                  <thead class="thead-light text-center">
+                    <tr>
+                      <th class="">Slno</th>
+                      <th class="W100">VID</th>
+                      <th class="W250">Vendor Name</th>
+                      <!-- <th class="W150">Address</th> -->
+                      <th class="">ContactPerson</th>
+                      <!-- <th class="">LandPhone</th> -->
+                      <th class="">MobilePhone</th>
+                      <!-- <th class="">MobilePhone2</th> -->
+                      <th class="W120">Email</th>
+                      <th class="text-right" style="width: 30px !important; border-right: 0px;padding-right: 0px;">Act</th>
+                      <th class="text-left" style="width: 30px; border-left: 0px;padding-left: 0px;">ion</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let list of vendorList; let i = index">
+                      <td class="text-right right-padding">{{i+1}}</td>
+                      <td>{{list.VID}}</td>
+                      <td>{{list.VendorName}}</td>
+                      <!-- <td>{{list.Address}}</td> -->
+                      <td>{{list.ContactPerson}}</td>
+                      <!-- <td>{{list.LandPhone}}</td> -->
+                      <td>{{list.MobilePhone1}}</td>
+                      <!-- <td>{{list.MobilePhone2}}</td> -->
+                      <td>{{list.Email}}</td>
+                      <td class="no-padding">
+                        <button type="button" class="btn blue-gradient btn-block btn-rounded px-1" (click)="Delete(i, list.VID)"><i
+                            class="fa fa-trash" title="Delete"></i></button>
+                      </td>
+                      <td class="no-padding">
+                        <button type="button" class="btn blue-gradient btn-block btn-rounded px-1" (click)="openModal(i, list.VID)"><i
+                            class="fa fa-edit" title="Edit"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

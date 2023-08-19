@@ -1,0 +1,52 @@
+<div class="container container-fluid">
+  <div class="row no-gutters">
+    <div class="col-md-6 offset-md-3">
+      <div class="Shadow card gradeient">
+        <div class="card-header"><i class="fa fa-align-justify"></i> Daily Purchase Report</div>
+        <div class="card-body">
+          <form [formGroup]="ReportUIForm" autocomplete="off">
+            <h5 class="text-center" style="margin-top:15px">Report Parameters</h5>
+            <h5 class="text-center">Enter values for the Parameters</h5>
+            <br>
+            <div class="row no-gutters">
+              <div class="form-group row mb-2">
+                <label for="SALESDATE" class="col-sm-4 control-label text-right no-padding">Purchase
+                  Date:</label>
+                <div class="col-sm-7">
+                  <ng-select [items]="PurchaseDate" [virtualScroll]="true" [clearable]="false" bindLabel="Name"
+                    bindValue="Value" placeholder="Select Purchase Date" formControlName="PURCHASEDATE">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="form-group row mb-2">
+                <label for="CATEGORYID" class="col-sm-4 form-label text-right no-padding">Category:</label>
+                <div class="col-sm-7">
+                  <ng-select [items]="Category" [virtualScroll]="true" [clearable]="false" bindLabel="Name"
+                    bindValue="Value" placeholder="Select Category" formControlName="CATEGORYID"
+                    (change)="GetSubCategory(f.CATEGORYID.value)">
+                  </ng-select>
+                </div>
+              </div>
+              <div class="form-group row mb-1">
+                <label for="SUBCATEGORYID" class="col-sm-4 form-label text-right no-padding">Sub
+                  Category:</label>
+                <div class="col-sm-7">
+                  <ng-select [items]="SubCategory" [virtualScroll]="true" [clearable]="false" bindLabel="Name"
+                    bindValue="Value" placeholder="Select Sub-Category" formControlName="SUBCATEGORYID">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-md-12 text-center">
+                <button type="button" class="btn blue-gradient mr-1 px-4"
+                  (click)="rptReportPurchaseInformationDaily(f.PURCHASEDATE.value, f.CATEGORYID.value, f.SUBCATEGORYID.value)">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

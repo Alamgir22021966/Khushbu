@@ -1,0 +1,82 @@
+<div class="container container-fluid">
+  <form [formGroup]="CategoryForm" autocomplete="off" (ngSubmit)="Save()">
+    <div class="row mt-2">
+      <div class="col-md-6 offset-md-3">
+        <div formGroupName="Categories">
+          <div class="form-group row mb-0">
+            <label for="CategoryID" class="col-sm-4 form-label font-weight-light text-right no-padding">Category
+              ID:</label>
+            <div class="col-sm-4">
+              <input type="text" formControlName="CategoryID" class="form-control form-control-sm mb-1 bg-white"
+                id="CategoryID" placeholder="" readonly="true">
+
+            </div>
+          </div>
+          <div class="form-group row mb-0">
+            <label for="Category" class="col-sm-4 form-label text-right font-weight-light no-padding">Category
+              Description:</label>
+            <div class="col-sm-7">
+              <input type="text" #AutoFocus id="Category" placeholder="" formControlName="Category"
+                class="form-control form-control-sm mb-1">
+            </div>
+            <div *ngIf="submitted && Categories.get('Category').errors" class="invalid-feedback error">
+              <div *ngIf="Categories.get('Category').errors.required">Category is required</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-md-6 offset-md-3">
+        <div class="card no-padding">
+          <div class="card-header"><i class="fa fa-align-justify"></i> Sub Category Information</div>
+          <div class="card-body no-padding">
+            <div class="tableFixHead">
+              <div class="table-responsive fix-table">
+                <table class="table table-bordered table-sm">
+                  <thead class="thead-light text-center">
+                    <tr>
+                      <th class="W60">Slno</th>
+                      <th>Sub-Category</th>
+                      <th class="W60">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr formArrayName="SubCategories" *ngFor="let sc of SubCategories.controls; let i = index">
+                      <th scope="row" class="text-right right-padding">
+                        {{SubCategories.controls[i].get('SubCategory').value == '' || SubCategories.controls[i].get('SubCategory').value == null ? '' : i+1}}
+                        <!-- {{ age ?? calculateAge() }} -->
+                      </th>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="SubCategory" class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding text-center">
+                        <button type="button" class="btn btn-sm btn-danger" (click)="DeleteOneItem(i)"><i
+                            class="fa fa-trash" title="Delete"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+
+          <button type="button" class="btn blue-gradient px-1 W80" (click)="changeData()"><i
+              [ngClass]="getClass(caption)" class="mr-1 W9"></i>{{caption}}</button>
+          <button type="button" class="btn blue-gradient px-1 W80" (click)="Cancel()"><i class="fa fa-ban mr-1"></i>Cancel</button>
+          <button type="button" class="btn blue-gradient px-1 W80" (click)="OpenDeleteModel()"><i
+              class="fa fa-trash mr-1"></i>Delete</button>
+          <button type="button" class="btn blue-gradient px-1 W80" (click)="OpenSearchModel()"><i
+              class="fa fa-search mr-1"></i>Search</button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+</div>

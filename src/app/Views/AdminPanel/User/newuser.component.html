@@ -1,0 +1,103 @@
+<div class="container-fluid mt-3">
+  <div class="row no-gutters">
+    <div class="col-md-8 offset-2">
+      <div class="shadow card no-padding">
+        <!-- <div class="card-header"><i class="fa fa-align-justify"></i> User Information</div> -->
+        <div class="card-body text-center">
+          <form [formGroup]="userForm" autocomplete="off">
+            <!-- <form [formGroup]="userForm" autocomplete="off" (ngSubmit)="Save()" appFocus> -->
+            <div class="row no-gutters">
+              <div class="form-outline row mb-1 mt-5">
+                <label for="UID" class="col-md-4 form-label text-right no-padding-right">User ID:</label>
+                <div class="col-md-4 left-padding">
+                  <input type="text" formControlName="UID" class="form-control bg-white" id="UID" readonly="true" [attr.disabled]="true">
+                  <!-- <div *ngIf="submitted && f.UID.errors" class="invalid-feedback error">
+                    <div *ngIf="f.UID.errors.required">User ID is required</div>
+                  </div> -->
+                </div>
+              </div>
+
+              <div class="form-outline row mb-1">
+                <label for="firstName" class="col-sm-4 form-label text-right no-padding-right">First Name:</label>
+                <div class="col-sm-6 left-padding">
+                  <input type="text" #autofocus formControlName="FirstName" class="form-control" id="firstName"
+                    [ngClass]="{ 'is-invalid': submitted && f.UID.errors }">
+                  <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback error">
+                    <div *ngIf="f.FirstName.errors.required">First Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-outline row mb-1">
+                <label for="lastName" class="col-sm-4 form-label text-right no-padding-right">Last Name:</label>
+                <div class="col-sm-6 left-padding">
+                  <input type="text" formControlName="LastName" class="form-control" id="lastName" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }">
+                  <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback error">
+                    <div *ngIf="f.LastName.errors.required">Last Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-1">
+                <label for="email" class="col-sm-4 form-label text-right no-padding-right">Email Address:</label>
+                <div class="col-sm-6 left-padding">
+                  <input type="email" formControlName="Email" class="form-control" id="email">
+                  <div *ngIf="submitted && f.Email.errors" class="invalid-feedback error">
+                    <div *ngIf="f.Email.errors.required">Email is required</div>
+                    <div *ngIf="f.Email.errors.email">Email must be a valid email address</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row mb-1">
+                <label for="password" class="col-sm-4 form-label text-right no-padding-right">Password:</label>
+                <div class="col-sm-4 left-padding">
+                  <input type="password" formControlName="Password" class="form-control" id="Password" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
+                  <div *ngIf="submitted && f.Password.errors" class="invalid-feedback error">
+                    <div *ngIf="f.Password.errors.required">Password is required</div>
+                    <div *ngIf="f.Password.errors.minlength">Password must be at least 6 characters</div>
+                    <div *ngIf="f.Password.errors.maxlength">Password must be less than 9 characters</div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row mb-5">
+                <label for="confirmPassword" class="col-sm-4 form-label text-right no-padding-right">Confirm
+                  Password:</label>
+                <div class="col-sm-4 left-padding">
+                  <input type="password" formControlName="ConfirmPassword" class="form-control" id="confirmPassword"
+                    placeholder="" [ngClass]="{ 'is-invalid': submitted && f.ConfirmPassword.errors }" />
+                  <div *ngIf="submitted && f.ConfirmPassword.errors" class="invalid-feedback error">
+                    <div *ngIf="f.ConfirmPassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="f.ConfirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row no-gutters">
+              <div class="col-md-12 no-padding text-center mb-5">
+                <button type="button" class="btn blue-gradient px-1" (click)="ChangeData()"><i [ngClass]="getClass()"
+                    class="mr-1"></i>{{caption}}</button>
+                <!-- <button type="button" class="btn blue-gradient px-1" (click)="Save()"><i
+                    class="fa fa-save mr-1"></i>Save</button> -->
+                <button type="button" class="btn blue-gradient px-1" (click)="Cancel()"><i class="fa fa-ban"></i>
+                  Cancel</button>
+
+                <button type="button" class="btn blue-gradient px-1" (click)="OpenDeleteModel()"><i
+                    class="fa fa-trash mr-1"></i>Delete</button>
+                <button type="button" class="btn blue-gradient px-1" (click)="OpenSearchModel()"><i
+                    class="fa fa-search mr-1"></i>Search</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

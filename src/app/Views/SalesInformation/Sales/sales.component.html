@@ -1,0 +1,263 @@
+<div class="container container-fluid">
+    <form [formGroup]="SalesInfoForm" autocomplete="off">
+        <div class="row no-gutters">
+            <div class="col-md-10 offset-md-1">
+                <div formGroupName="SalesInfo">
+
+                    <div class="row mb-1">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <label for="InvoiceNumber" class="col-sm-4 form-label font-weight-light text-right no-padding-right">Invoice
+                                    Number:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" formControlName="InvoiceNumber"
+                                        class="form-control form-control-sm bg-white" id="InvoiceNumber"
+                                        placeholder="" readonly="true">
+                                    <!-- <div *ngIf="submitted && SalesInfo.get('InvoiceNumber').errors"
+                                        class="invalid-feedback error">
+                                        <div *ngIf="SalesInfo.get('InvoiceNumber').errors.required">Invoice Number is
+                                            required</div>
+                                    </div> -->
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <label for="CustomerID" class="col-sm-4 form-label font-weight-light text-right no-padding-right">Mobile
+                                    Number:</label>
+                                <div class="col-sm-6">
+                                    <input type="text" #AutoFocus formControlName="CustomerID" class="form-control form-control-sm"
+                                        id="obile
+                                        Number" placeholder="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <label for="SalesDate" class="col-sm-4 font-weight-light text-right no-padding-right">Sales Date:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" placeholder="Datepicker" formControlName="SalesDate"
+                                        placeholder="DD/MM/YYYY" bsDatepicker class="form-control form-control-sm"
+                                        placement="bottom" [bsConfig]="datePickerConfig">
+                                    <div *ngIf="submitted && SalesInfo.get('SalesDate').errors"
+                                        class="invalid-feedback error">
+                                        <div *ngIf="SalesInfo.get('SalesDate').errors.required">Sales Date is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <label for="SalesBy" class="col-sm-4 font-weight-light text-right no-padding-right">Sales
+                                    By:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" formControlName="SalesBy" class="form-control form-control-sm bg-white"
+                                        id="SalesBy" placeholder="" readonly="true">
+                                    <div *ngIf="submitted && SalesInfo.get('SalesBy').errors"
+                                        class="invalid-feedback error">
+                                        <div *ngIf="SalesInfo.get('SalesBy').errors.required">Sales By is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="row mb-0">
+                                        <div class="col-sm-6 font-weight-light text-right no-padding-right">
+                                            <label for="DiscountAmount">Discount Amount:</label>
+                                        </div>
+
+                                        <div class="col-sm-6" style="padding-right: 1px;">
+                                            <div class="input-group no-padding">
+                                                <input type="text" formControlName="DiscountAmount"
+                                                    class="form-control form-control-sm" placeholder="">
+                                                <div class="input-group-append no-padding">
+                                                    <div class="input-group-text tk-mask">TK</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4" style="padding-left: 1px;">
+                                    <div class="input-group no-padding">
+                                        <input type="text" formControlName="DiscountPercentage"
+                                            class="form-control form-control-sm" placeholder="">
+                                        <div class="input-group-append no-padding">
+                                            <div class="input-group-text"><i class="fa fa-percent"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <label for="Outlet" class="col-sm-4 form-label font-weight-light text-right no-padding-right">Outlet
+                                    Name:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" formControlName="Outlet" class="form-control form-control-sm"
+                                        id="Outlet" placeholder="">
+                                    <div *ngIf="submitted && SalesInfo.get('Outlet').errors" class="invalid-feedback">
+                                        <div *ngIf="SalesInfo.get('Outlet').errors.required">Outlet Name is required
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <label for="ModeofPayment" class="col-sm-4 form-label font-weight-light text-right no-padding-right">Payment
+                                    Method:</label>
+                                <div class="col-sm-6">
+                                    <select formControlName="ModeofPayment" class="form-control form-control-sm">
+                                        <option *ngFor="let mode of ModeofPayments" [value]="mode.name">
+                                            {{mode.name}}
+                                        </option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="card no-padding">
+            <!-- <div class="card-header CardHeader-padding"><i class="fa fa-align-justify"></i> Sales Information</div> -->
+            <div class="card-body no-padding">
+                <div class="tableFixHead">
+                    <div class="table-responsive fix-table">
+                        <table class="table table-bordered table-sm">
+                            <thead class="thead-light text-center">
+                                <tr>
+                                    <th class="W40">Slno</th>
+                                    <th class="W130">Category</th>
+                                    <th class="W200">SubCategory</th>
+                                    <th class="W250">Product Description</th>
+                                    <th class="W80">Quantity</th>
+                                    <th class="W90">Unit Price</th>
+                                    <th class="W90">Total Price</th>
+                                    <th class="W40">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr formArrayName="SalesDetails"
+                                    *ngFor="let salesDetail of SalesDetails.controls; let i = index">
+
+                                    <th scope="row" class="text-right right-padding">
+                                        {{SalesDetails.controls[i].get('CategoryID').value == '' || SalesDetails.controls[i].get('CategoryID').value == null ? '' : i+1}}
+                                    </th>
+
+                                    <td class="no-padding" formGroupName={{i}}>
+
+                                        <select formControlName="CategoryID"
+                                            class="form-control form-control-sm no-border" id="i"
+                                            (change)="GetSubCategory(i, SalesDetails.controls[i].get('CategoryID').value)">
+                                            <option value=""></option>
+                                            <option *ngFor="let category of Category; let l = index"
+                                                [value]="category.Value">
+                                                {{category.Name}}
+                                            </option>
+                                        </select>
+
+                                    </td>
+                                    <td class="no-padding" formGroupName={{i}}>
+                                        <select formControlName="SubCategoryID"
+                                            class="form-control form-control-sm no-border" id="i"
+                                            (change)="GetProductName(i, SalesDetails.controls[i].get('CategoryID').value, SalesDetails.controls[i].get('SubCategoryID').value)">
+                                            <option value=""></option>
+                                            <option *ngFor="let subCategory of SubCategory[i]; let j = index"
+                                                [value]="subCategory.Value">
+                                                {{subCategory.Name}}
+                                            </option>
+
+                                        </select>
+                                    </td>
+                                    <td class="no-padding" formGroupName={{i}}>
+                                        <select formControlName="ItemID" class="form-control form-control-sm no-border"
+                                            id="i">
+                                            <option value=""></option>
+                                            <option *ngFor="let item of items[i]; let k = index" [value]="item.Value">
+                                                {{item.Name}}
+                                            </option>
+                                        </select>
+                                    </td>
+
+                                    <td class="no-padding" formGroupName={{i}}>
+                                        <!-- <ng-template #template>
+                                    <strong>Some complex HTML</strong>
+                                    <li>Can't be xaaaaaaaaaaa</li>
+                                    <li>Can't be y</li>
+                                    <li>Can't be z</li>
+                                  </ng-template>
+
+                                  <input type="text" formControlName="Quantity"
+                                         class="form-control form-control-sm no-border" [tooltip]="template" placement="bottom"
+                                         (change)="GetRetailPrice(i, SalesDetails.controls[i].get('CategoryID').value, SalesDetails.controls[i].get('SubCategoryID').value, SalesDetails.controls[i].get('ItemID').value)"> -->
+                                        <input type="text" formControlName="Quantity"
+                                            class="form-control form-control-sm no-border"
+                                            (change)="GetRetailPrice(i, SalesDetails.controls[i].get('CategoryID').value, SalesDetails.controls[i].get('SubCategoryID').value, SalesDetails.controls[i].get('ItemID').value)">
+                                    </td>
+                                 
+                                    <td class="no-padding" formGroupName={{i}}>
+                                        <input type="text" formControlName="UnitPrice"
+                                            class="form-control form-control-sm no-border text-right" (change)="ChangeTotalPrice(i)">
+                                    </td>
+                                    <td class="no-padding" formGroupName={{i}}>
+                                        <input type="text" formControlName="TotalPrice"
+                                            class="form-control form-control-sm no-border text-right bg-white">
+                                    </td>
+                                    <td class="no-padding">
+                                        <button type="button" class="btn btn-sm btn-danger ml-4"
+                                            (click)="DeleteOneItem(SalesInfoForm.controls['SalesInfo'].get('InvoiceNumber').value, i)"><i class="fa fa-trash"
+                                                title="Delete"></i></button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters">
+            <div class="col-md-10 offset-md-3">
+                <div class="mt-0">
+                    <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="ChangeData()" style="width: 90px"><i [ngClass]="getClass()" 
+                            class="px-1"></i>{{caption}}</button>
+                    <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="Cancel()" style="width: 90px"><i
+                            class="fa fa-ban px-1"></i>Cancel</button>
+                    <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="OpenDeleteModel()" style="width: 90px"><i
+                            class="fa fa-trash px-1"></i>Delete</button>
+                    <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="OpenSearchModel()" style="width: 90px"><i class="fa fa-search px-1"></i>Search</button>
+                    
+                    <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1"
+                        (click)="Print(SalesInfoForm.controls['SalesInfo'].get('InvoiceNumber').value)" style="width: 90px"><i
+                            class="fa fa-print"></i> Print</button>
+                    <span class="mt-0 text-right" style="margin-left: 120px;">
+                        Total price is {{ totalSum | currency:'Tk ':'symbol-narrow':'1.2-2'}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

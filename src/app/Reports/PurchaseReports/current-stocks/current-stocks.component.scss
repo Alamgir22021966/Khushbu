@@ -1,0 +1,69 @@
+
+@import "_styles.scss";
+
+.fix-table {
+    height: 380px;
+    overflow-y: scroll;
+}
+
+.tableFixHead thead th { 
+     position: sticky; top: 0; 
+}
+
+.no-padding-right{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.right-padding{
+    padding-right: 15px;
+    font-weight: normal;
+}
+
+.W050{
+    width:50px;
+}
+
+.W070{
+    width:70px;
+}
+
+.W080{
+    width:80px;
+}
+
+.W090{
+    width:90px;
+}
+
+.W110{
+    width:110px;
+}
+
+.W120{
+    width: 120px;
+}
+
+.W180{
+    width:180px;
+}
+
+.positive {
+    background-color: green;
+}
+
+.sideline {
+    background-color: yellow;
+}
+
+.slow {
+    background-color: orange;
+}
+
+.negative {
+    background-color: red;
+}
+
+.font-weight-light thead th {
+    font-weight: 300;;
+}

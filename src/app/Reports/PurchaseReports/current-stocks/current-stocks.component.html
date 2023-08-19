@@ -1,0 +1,94 @@
+<div class="container container-fluid" style="padding-top: 0px;">
+  <form [formGroup]="ReportCurrentStock" autocomplete="off">
+    <div class="row no-gutters">
+      <div class="col-md-8 offset-md-2">
+        <div formGroupName="StockType">
+          <div class="row mb-2 mt-3">
+            <div class="col-sm-6">
+              <div class="row">
+                <label for="CATEGORYID" class="col-sm-4 form-label text-right no-padding-right">Category:</label>
+                <div class="col-sm-8" style="padding-left: 6px;">
+                  <ng-select [items]="Category" [virtualScroll]="true" [clearable]="false" bindLabel="Name"
+                    bindValue="Value" placeholder="All" [searchable]="true" formControlName="CATEGORYID"
+                    (open)="onOpen()" (close)="onClose()" (focus)="onFocus($event)" (search)="onSearch($event)">
+                  </ng-select>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="row">
+                <label for="SUBCATEGORYID" class="col-sm-4 form-label text-right no-padding-right">Sub
+                  Category:</label>
+                <div class="col-sm-8" style="padding-left: 6px;">
+                  <ng-select [items]="SubCategory" [virtualScroll]="true" [clearable]="false" bindLabel="Name"
+                    bindValue="Value" placeholder="Select Sub-Category" formControlName="SUBCATEGORYID"
+                    (change)="GetCurrentStock(StockType.get('CATEGORYID').value, StockType.get('SUBCATEGORYID').value)">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row no-gutters">
+      <div class="col-md-10 offset-md-1">
+        <div class="card no-padding">
+          <div class="card-header"><i class="fa fa-align-justify"></i> Current Stock Status</div>
+          <div class="card-body no-padding">
+            <div class="tableFixHead">
+              <div class="table-responsive fix-table font-weight-light">
+                <table class="table table-bordered table-sm">
+                  <thead class="thead-light text-center">
+                    <tr>
+                      <th class="W050">Slno</th>
+                      <th class="W110">Category</th>
+                      <th class="W110">SubCategory</th>
+                      <th class="W180">Product Description</th>
+                      <th class="W070">Min Stock</th>
+                      <th class="W090">Current Stock</th>
+                      <th class="W080">Stock Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let list of currentStocks; let i = index">
+                      <td class="text-right right-padding">{{i+1}}</td>
+                      <td>{{list.Category}}</td>
+                      <td>{{list.SubCategory}}</td>
+                      <td>{{list.ProductName}}</td>
+                      <td class="text-right right-padding">{{list.MinStock}}</td>
+                      <td class="text-right right-padding">{{list.CurrentStock}}</td>
+                      <td class="no-padding">
+                        <button type="button" class="btn btn-sm ml-4" [ngClass]="GetClass(list.CurrentStock, list.MinStock)"><i title="Stock Status"></i></button>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-1">
+      <div class="col-md-12 text-center">
+        <!-- <button type="button" class="btn blue-gradient mr-1 px-4"
+          (click)="rptReportCurrentStockStatus(StockType.get('CATEGORYID').value, StockType.get('SUBCATEGORYID').value)">Submit</button> -->
+
+            <button (click)="ReportCurrentStock.valid ? generatePdf('open') : ''"
+              class="btn blue-gradient btn-rounded px-1 mb-1" style="width: 90px;"><i class="fa fa-folder-open mr-1"></i> <span>Open</span></button>
+            <button (click)="ReportCurrentStock.valid ? generatePdf('download') : ''"
+              class="btn blue-gradient btn-rounded px-1 mb-1" style="width: 110px;">
+              <i class="fa fa-download mr-1" aria-hidden="true"></i><span>Download</span></button>
+            <button (click)="ReportCurrentStock.valid ? generatePdf('print') : ''"
+              class="btn blue-gradient btn-rounded px-1 mb-1" style="width: 90px;">
+              <i class="fa fa-print mr-1" aria-hidden="true"></i><span>Print</span></button>
+      </div>
+    </div>
+
+  </form>
+</div>

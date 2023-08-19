@@ -1,0 +1,39 @@
+.fa-bars {
+    cursor: pointer;
+}
+
+.nav-item {
+    .nav-link {
+        cursor: pointer;
+    }
+}
+
+.main-header {
+    margin-left: 275px !important;
+}
+
+.title {
+    color: #0DA0EC;
+
+    // color: #0DA0EC;
+    // text-shadow: 2px 2px 2px #000000;
+    
+    // color: #8f135d !important;
+    // color: #bc1135 !important;
+    font-size: 26px !important;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 0px;
+}
+
+:host ::ng-deep .dropdown-menu {
+    margin-top: 8px;
+    width: 275px;
+    height: 390px;
+}
+
+// h1 {
+//     color: #0DA0EC;
+//     text-shadow: 2px 2px 2px #000000;
+//     // text-shadow: 2px 2px 2px #bc1135;
+    
+//   }

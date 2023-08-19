@@ -1,0 +1,13 @@
+@import "_styles.scss";
+@import "_stylesautocomplete.scss";
+
+.modal-body {
+    text-align: left;
+    padding-left: 20px;
+    // margin-top: 10px;
+    min-height: 200px;
+}
+
+.pull-right {
+    padding-top: 5px;
+}

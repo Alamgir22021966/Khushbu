@@ -1,0 +1,309 @@
+<div class="container-fluid">
+  <form [formGroup]="ResumeForm" autocomplete="off">
+    <div class="row">
+      <div class="col-md-8" style="padding-right: 1px;">
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="row">
+              <h4 class="card-title d-flex align-items-center"><i class="fa fa-th mr-2" aria-hidden="true"></i>Personal
+                Details</h4>
+              <div class="col-md-6">
+                <div formGroupName="PersonalDetails">
+                  <div class="mb-1">
+                    <input type="text" class="form-control bg-white" formControlName="EID" placeholder="EID" id="EID"
+                      readonly="true">
+                  </div>
+                  <div class="mb-1">
+                    <input type="text" class="form-control" formControlName="FatherName" placeholder="FatherName"
+                      id="FatherName">
+                  </div>
+
+                  <div class="mb-1">
+                    <input type="text" class="form-control" formControlName="ContactNo" id="ContactNo"
+                      placeholder="Mobile Number">
+                  </div>
+
+                  <div class="mb-1">
+                    <textarea class="form-control" formControlName="PresentAddress" id="PresentAddress"
+                      placeholder="Present Address" rows="3"></textarea>
+                  </div>
+
+                  <div class="mb-1">
+                    <!-- <input type="text" placeholder="" formControlName="DOB" placeholder="Date of Birth" bsDatepicker
+                      class="form-control" placement="bottom"
+                      [bsConfig]="{ isAnimated: true, showWeekNumbers: false, dateInputFormat: 'DD/MM/YYYY'}"> -->
+                    <input type="text" formControlName="DOB" placeholder="DD/MM/YYYY" bsDatepicker class="form-control"
+                      placement="right" [bsConfig]="datePickerConfig">
+
+                  </div>
+
+                  <div class="mb-1">
+                    <input type="text" class="form-control" formControlName="SocialProfile" id="SocialProfile"
+                      placeholder="Social Profile ">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div formGroupName="PersonalDetails">
+                  <div class="mb-1">
+                    <input type="text" #autofocus class="form-control" formControlName="FullName" id="FullName"
+                      placeholder="Full Name">
+                  </div>
+                  <div class="mb-1">
+                    <input type="text" class="form-control" formControlName="MotherName" placeholder="MotherName"
+                      id="MotherName">
+                  </div>
+                  <div class="mb-1">
+                    <input type="text" class="form-control" formControlName="Email" id="Email" placeholder="Email">
+                  </div>
+                  <div class="mb-1">
+
+                    <textarea class="form-control" formControlName="PermanentAddress" id="PermanentAddress"
+                      placeholder="Permanent Address" rows="3"></textarea>
+
+                  </div>
+                  <div class="mb-1">
+                    <input type="text" class="form-control" formControlName="Nationality" id="Nationality"
+                      placeholder="Nationality">
+                  </div>
+                  <div class="mb-1">
+                    <input type="text" class="form-control" formControlName="NationalID" id="NationalID"
+                      placeholder="National ID Number">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center mr-1">
+                <i class="fa fa-th mr-2" aria-hidden="true">
+
+                </i>
+                Education:
+              </h4>
+              <button class="btn btn-primary" (click)="addEducation()">+</button>
+            </div>
+
+            <div class="tableFixHead">
+              <div class="table-responsive fix-table">
+                <table class="table table-bordered table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th class="text-center">Slno</th>
+                      <th class="text-center">Degree</th>
+                      <th class="text-center">Institute</th>
+                      <th class="text-center">Subject</th>
+                      <th class="text-center">PassingYear</th>
+                      <th class="text-center">Grade</th>
+                      <th class="text-center">Percentage</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr formArrayName="Educations" *ngFor="let sc of Educations.controls; let i = index">
+                      <th scope="row" class="text-right right-padding">
+                        {{Educations.controls[i].get('Degree').value == '' || Educations.controls[i].get('Degree').value == null ? '' : i+1}}
+                      </th>
+                      <td class="no-padding" formGroupName={{i}}>
+
+                        <select formControlName="Degree" class="form-control form-control-sm no-border">
+                          <option *ngFor="let Degree of Degrees" [value]="Degree.degree">
+                            {{Degree.degree}}
+                          </option>
+                        </select>
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="Institute" class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="Subject" class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="PassingYear" class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="Grade" class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="Percentage" class="form-control form-control-sm no-border">
+                      </td>
+
+                      <td class="no-padding text-center">
+                        <button type="button" class="btn btn-sm btn-danger" (click)="DeleteEduItem(i)"><i
+                            class="fa fa-trash" title="Delete"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center mr-1"><i class="fa fa-th mr-2" aria-hidden="true"></i>Experience:</h4>
+              <button class="btn btn-primary" (click)="addExperience()">+</button>
+            </div>
+            <div class="tableFixHead">
+              <div class="table-responsive fix-table">
+                <table class="table table-bordered table-sm">
+                  <thead class="thead-light">
+                    <tr>
+                      <th class="text-center">Slno</th>
+                      <th class="text-center">Employer</th>
+                      <th class="text-center">JobTitle</th>
+                      <th class="text-center">JobDescription</th>
+                      <th class="text-center">StartDate</th>
+                      <th class="text-center">Experience</th>
+                      <th class="text-center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr formArrayName="Experiences" *ngFor="let sc of Experiences.controls; let i = index">
+                      <th scope="row" class="text-right right-padding">
+                        {{Experiences.controls[i].get('Employer').value == '' || Experiences.controls[i].get('Employer').value == null ? '' : i+1}}
+                      </th>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="Employer" class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="JobTitle" class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="JobDescription"
+                          class="form-control form-control-sm no-border">
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" placeholder="" formControlName="StartDate" bsDatepicker
+                          class="form-control form-control-sm no-border" placement="bottom"
+                          [bsConfig]="{ isAnimated: true, showWeekNumbers: false, dateInputFormat: 'DD/MM/YYYY'}">
+
+                      </td>
+                      <td class="no-padding" formGroupName={{i}}>
+                        <input type="text" formControlName="Experience" class="form-control form-control-sm no-border">
+                      </td>
+
+                      <td class="no-padding text-center">
+                        <button type="button" class="btn btn-sm btn-danger" (click)="DeleteExpItem(i)"><i
+                            class="fa fa-trash" title="Delete"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Skills -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between card-title">
+              <h4 class="d-flex align-items-center mr-1">
+                <i class="fa fa-newspaper-o mr-2" aria-hidden="true"></i>
+                Skills:
+              </h4>
+              <span>
+                <button class="btn btn-primary mr-1" (click)="addSkill()">+</button>
+                <button class="btn btn-danger" (click)="removeSkill()">-</button>
+              </span>
+
+            </div>
+            <div class="row no-padding">
+              <div formArrayName="Skills" *ngFor="let s of Skills.controls; let i=index">
+                <div formGroupName={{i}}>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="skill{{i}}" formControlName="Skill"
+                        placeholder="e.g. Java / Angular / .Net ">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Other Details -->
+        <div class="shadow-sm card">
+          <div class="card-body">
+            <h4 class="card-title d-flex align-items-center">
+              <i class="fa fa-braille mr-2" aria-hidden="true"> </i>Other Details:
+            </h4>
+            <div class="row">
+              <div class="col-md-12">
+                <div formGroupName="PersonalDetails">
+                  <div class="form-group">
+                    <textarea type="text" class="form-control" formControlName="OtherDetails" id="otherDetails"
+                      rows="4"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="padding-left: 1px;">
+        <div class="shadow-sm card action-buttons">
+
+          <div class="col-md-12 text-center mt-3">
+            <div class="mt-2">
+              <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="NewEID()"><i
+                  class="fa fa-plus mr-1"></i>New</button>
+              <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1" (click)="Save()"><i
+                  class="fa fa-save mr-1"></i>Save</button>
+              <button type="button" class="btn blue-gradient btn-rounded px-1 mb-1"><i
+                  class="fa fa-search mr-1"></i>Search</button>
+            </div>
+
+            <div>
+              <button (click)="ResumeForm.valid ? generatePdf('open') : ''"
+                class="btn blue-gradient btn-rounded px-1 mb-1"><i class="fa fa-folder-open mr-1"
+                  aria-hidden="true"></i> <span>Open</span></button>
+              <button (click)="ResumeForm.valid ? generatePdf('download') : ''"
+                class="btn blue-gradient btn-rounded px-1 mb-1">
+                <i class="fa fa-download mr-1" aria-hidden="true"></i><span>Download</span></button>
+              <button (click)="ResumeForm.valid ? generatePdf('print') : ''"
+                class="btn blue-gradient btn-rounded px-1 mb-1">
+                <i class="fa fa-print mr-1" aria-hidden="true"></i><span>Print</span></button>
+            </div>
+
+            <button type='reset' (click)="Cancel()" class="btn blue-gradient btn-rounded px-1 mr-1 mb-3">
+              <i class="fa fa-ban mr-1" aria-hidden="true"></i><span>Cancel</span></button>
+          </div>
+        </div>
+
+        <div class="card p-4">
+          <div formGroupName="PersonalDetails">
+            <div class="form-group">
+              <label class="h5 mb-3" for="">Show your picture in Resume</label>
+              <!-- <input type="file" class="form-control-file" formControlName="ProfilePic" (change)="fileChanged($event)"
+                aria-describedby="fileHelpId"> -->
+              <div class="row no-padding mb-2">
+                <div class="col-sm-8" style="padding-right: 5px;">
+                  <input type="text" formControlName="ProfilePic" class="form-control bg-white" id="FILENAME"
+                    placeholder="File Name">
+                </div>
+                <div class="col-sm-4 no-padding text-right">
+                  <button class="upload-button btn blue-gradient btn-block btn-rounded px-1 mr-1">
+                    <i class="fa fa-upload"></i><input type="file" #file (change)="fileChanged($event)">
+                  </button>
+                </div>
+              </div>
+            </div>
+            <img *ngIf="resume.ProfilePic" [src]="resume.ProfilePic" class="img-thumbnail">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,44 @@
+:host {
+    display: block;
+}
+
+
+.main-sidebar {
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+    width: 275px;
+    // background-color: #EEEEEE;
+    // background-color: #0DA0EC;
+    // background-color: #64A0FA;
+    // background-color: #0069f0;
+    // background: linear-gradient(to bottom, #0069f0, #0DA0EC);
+    // background: linear-gradient(to bottom, #00B8FE, #0DA0EC);
+    // background: linear-gradient(to bottom, #00B8FE, #0069f0);
+    // background: linear-gradient(to bottom, white, white);
+    // background: linear-gradient(to bottom, #ffeeaa, #ffeeaa);
+    // background: linear-gradient(to bottom, #ffeeaa, #fffeee);
+    background: linear-gradient(to bottom, #fffeee, #fffeee);
+    // background: linear-gradient(to bottom, #EEEEEE, #f5f5f5);
+}
+
+.content-wrapper,
+.main-footer {
+    margin-left: 275px !important;
+    background-color: white;
+    // background-color: #f4f6f9;
+}
+
+.main-footer {
+    padding: 2px;
+}
+.content-wrapper {
+    margin-top: 2px;
+    max-height: 535px;
+    min-height: 535px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+// ::-webkit-scrollbar {
+//     width: 0px;
+//     background: transparent;
+// }
